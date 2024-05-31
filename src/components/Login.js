@@ -7,7 +7,7 @@ const Login = () => {
   let history = useNavigate();
 
     const handleSubmit= async (e)=>{
-      console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%');
+      
         e.preventDefault();
         const response = await fetch("http://localhost:5000/auth/login", {
             method: 'POST',
@@ -22,7 +22,6 @@ const Login = () => {
             // Save the auth token and redirect
 
             localStorage.setItem('token', json.authtoken); 
-            console.log(localStorage.getItem('token'));
             history("/about");
 
         }

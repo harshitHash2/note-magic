@@ -48,6 +48,7 @@ const NoteState = (props)=>{
 
       const deleteNote = async (id) => {
         // API Call
+        console.log(id);
         const response = await fetch(`${host}/user/deletenote/${id}`, {
           method: 'DELETE',
           headers: {
@@ -65,7 +66,7 @@ const NoteState = (props)=>{
 
     // Edit a note
     const editNote= async (id, title, description, tag)=> {
-      const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+      const response = await fetch(`${host}/user/note/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -75,6 +76,7 @@ const NoteState = (props)=>{
       });
 
       const json = await response.json(); 
+      console.log(title);
 
       let newNotes = JSON.parse(JSON.stringify(notes))
      // Logic to edit in client

@@ -8,9 +8,6 @@ const Signup = () => {
 
   const handleSubmit= async (e)=>{
     e.preventDefault();
-    console.log(credentials.name);
-    console.log(credentials.email);
-    console.log(credentials.password);
     const response = await fetch("http://localhost:5000/auth/signup", {
         method: 'POST',
         headers: {

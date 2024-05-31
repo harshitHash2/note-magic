@@ -1,22 +1,24 @@
-
-import React, {useContext, useState, useRef } from 'react'
+import React, {useContext, useState} from 'react'
 import noteContext from '../context/notes/noteContext'
+import { useLocation } from 'react-router-dom';
 
-const AddNote = () => {
-    // const ref = useRef();
+
+const EditNote = () => {
+    const location = useLocation();
+  const { id, it, i_d, ita } = location.state || {};
     const context = useContext(noteContext);
-    const {notes, addnewNote}= context;
+    const {notes, editNote}= context;
 
-    const [note, setNote ] = useState({title: "", description: "", tag: ""})
+    const [note, setNote ] = useState({title: it, description: i_d, tag: ita})
 
     const handleClick = ()=>{
-      addnewNote(note.title, note.description, note.tag);
+      console.log(id);
+      editNote(id, note.title, note.description, note.tag);
     }
 
     const onChange= (e)=>{
       setNote({...note, [e.target.name]: e.target.value})
     }
-
   return (
     <>
     <div className='container '>
@@ -27,14 +29,14 @@ const AddNote = () => {
   <div className="input-group mb-3">
   <span className="input-group-text">t:</span>
   <div className="form-floating">
-    <input type="text" className="form-control" id="title" name='title' placeholder="title" onChange={onChange} />
+    <input type="text" className="form-control" id="title" name='title' value={note.title} placeholder="title" onChange={onChange} />
     <label htmlFor="title">title</label>
   </div>
 </div>
 <div className="input-group mb-3">
   <span className="input-group-text">d:</span>
   <div className="form-floating">
-    <input type="text" className="form-control" id="description" name='description' placeholder="Description" style={{height: '180px'}} onChange={onChange}/>
+    <input type="text" className="form-control" id="description" name='description' value={note.description} placeholder="Description" style={{height: '180px'}} onChange={onChange}/>
     <label htmlFor="description">Description</label>
   </div>
 </div>
@@ -42,8 +44,8 @@ const AddNote = () => {
 <div className="input-group mb-3">
   <span className="input-group-text">d:</span>
   <div className="form-floating">
-    <input type="text" className="form-control" id="tag" name='tag' placeholder="Tag*" style={{height: '180px'}} onChange={onChange}/>
-    <label htmlFor="tag">Description</label>
+    <input type="text" className="form-control" id="tag" name='tag' value={note.tag} placeholder="Tag*"  onChange={onChange}/>
+    <label htmlFor="tag">Tag</label>
   </div>
 </div>
     <i className="fa-sharp fa-solid fa-pen mx-2" onClick={handleClick}></i>
@@ -59,4 +61,4 @@ const AddNote = () => {
   )
 }
 
-export default AddNote
+export default EditNote
