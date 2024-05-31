@@ -1,9 +1,4 @@
-// import { createContext } from "react";
-
-// const noteContext = createContext();
-
-// export default noteContext;
-
+// Creating context object and exporting
 import React from "react";
 
 const noteContext = React.createContext();

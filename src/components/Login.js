@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  // Declaring required variable
   const [credentials, setCredentials] = useState({email: "", password: ""});
   let history = useNavigate();
 

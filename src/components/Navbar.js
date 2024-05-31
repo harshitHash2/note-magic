@@ -6,6 +6,7 @@ import {
   } from "react-router-dom";
 
 const Navbar = () => {
+  // Declaring required variable
     const navigate= useNavigate();
     let location = useLocation();
     useEffect(() => {

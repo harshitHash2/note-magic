@@ -3,6 +3,7 @@ import noteContext from '../context/notes/noteContext';
 import { useNavigate } from 'react-router-dom';
 
 const Noteitem = (props) => {
+  // Declaring required variable and using Context
   const context = useContext(noteContext);
   const {deleteNote}= context;
   const {note}= props;

@@ -3,9 +3,12 @@ import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+
+  // Declaring required variables
   const [credentials, setCredentials] = useState({name: "", email: "", password: ""});
   let history = useNavigate();
 
+  // For submit button functionality
   const handleSubmit= async (e)=>{
     e.preventDefault();
     const response = await fetch("http://localhost:5000/auth/signup", {
@@ -25,6 +28,7 @@ const Signup = () => {
     
 }
 
+// For ON change functionality of input field
 const onChange = (e)=>{
   setCredentials({...credentials, [e.target.name]: e.target.value})
 }

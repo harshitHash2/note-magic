@@ -10,10 +10,6 @@ export const Home = () => {
     <>
     
     <MainCon/>
-    {/* <Signup/> */}
-    {/* <Login /> */}
-    {/* <Notes /> */}
-    {/* <AddNote /> */}
     </>
   )
 }
