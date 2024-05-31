@@ -3,12 +3,14 @@ import Notes from './Notes'
 import AddNote from './AddNote'
 import Login from './Login'
 import Signup from './Signup'
+import MainCon from './MainCon'
 
 export const Home = () => {
   return (
     <>
-    <h2>This is testing one</h2>
-    <Signup/>
+    
+    <MainCon/>
+    {/* <Signup/> */}
     {/* <Login /> */}
     {/* <Notes /> */}
     {/* <AddNote /> */}

@@ -32,6 +32,10 @@ const onChange = (e)=>{
 
   return (
     <>
+    <h2 className='polo my-4' style={{textAlign: 'center', color: 'white'}}> Sign-UP </h2>
+    <div className='container ' style={{width: '35rem'}} >
+    <div className="card my-4" style={{borderRadius: '40px'}}>
+  <div className="card-body">
     <div className='container'>
     <form onSubmit={handleSubmit}>
     <div className="form-group">
@@ -49,8 +53,11 @@ const onChange = (e)=>{
     <input type="password" className="form-control" id="password" name='password' value={credentials.password} onChange={onChange} placeholder="Password" />
   </div>
   
-  <button type="submit" className="btn btn-primary">Submit</button>
+  <button type="submit" className="btn btn-primary">SignUp</button>
 </form>
+</div>
+</div>
+</div>
 </div>
     </>
   )

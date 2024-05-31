@@ -1,9 +1,10 @@
 import React, {useContext, useState} from 'react'
 import noteContext from '../context/notes/noteContext'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const EditNote = () => {
+  let navi= useNavigate();
     const location = useLocation();
   const { id, it, i_d, ita } = location.state || {};
     const context = useContext(noteContext);
@@ -12,8 +13,9 @@ const EditNote = () => {
     const [note, setNote ] = useState({title: it, description: i_d, tag: ita})
 
     const handleClick = ()=>{
-      console.log(id);
+      // console.log(id);
       editNote(id, note.title, note.description, note.tag);
+      navi('/notes')
     }
 
     const onChange= (e)=>{
@@ -21,35 +23,37 @@ const EditNote = () => {
     }
   return (
     <>
-    <div className='container '>
+    <h2 className='polo my-3' style={{textAlign: 'center', color: 'white'}}> Update Note! </h2>
+    <div className='container' style={{width: '35rem'}}>
       
      <div className='col'>
-     <div className="card">
+     <div className="card my-4" style={{borderRadius: '40px'}}>
   <div className="card-body">
   <div className="input-group mb-3">
-  <span className="input-group-text">t:</span>
-  <div className="form-floating">
-    <input type="text" className="form-control" id="title" name='title' value={note.title} placeholder="title" onChange={onChange} />
-    <label htmlFor="title">title</label>
+  <span className="input-group-text">Title:</span>
+  <div className="form-floating mx-3">
+    <input type="text" className="form-control" style={{border: '1px solid #B6D0E2', borderRadius: '20px'}} id="title" name='title' value={note.title} placeholder="title" onChange={onChange} />
+    <label htmlFor="title">Title</label>
   </div>
 </div>
 <div className="input-group mb-3">
-  <span className="input-group-text">d:</span>
-  <div className="form-floating">
-    <input type="text" className="form-control" id="description" name='description' value={note.description} placeholder="Description" style={{height: '180px'}} onChange={onChange}/>
+  <span className="input-group-text">Description:</span>
+  <div className="form-floating mx-3">
+    <input type="text" className="form-control" style={{border: '1px solid #B6D0E2', borderRadius: '20px'}} id="description" name='description' value={note.description} placeholder="Description" onChange={onChange}/>
     <label htmlFor="description">Description</label>
   </div>
 </div>
 
 <div className="input-group mb-3">
-  <span className="input-group-text">d:</span>
-  <div className="form-floating">
-    <input type="text" className="form-control" id="tag" name='tag' value={note.tag} placeholder="Tag*"  onChange={onChange}/>
+  <span className="input-group-text">Tag:</span>
+  <div className="form-floating mx-3">
+    <input type="text" className="form-control" style={{border: '1px solid #B6D0E2', borderRadius: '20px'}} id="tag" name='tag' value={note.tag} placeholder="Tag*"  onChange={onChange}/>
     <label htmlFor="tag">Tag</label>
   </div>
 </div>
-    <i className="fa-sharp fa-solid fa-pen mx-2" onClick={handleClick}></i>
-    <i className="fa-sharp fa-solid fa-trash mx-2"></i>
+<button type="button" class="btn btn-outline-primary mx-2" onClick={handleClick}>Update</button>
+<button type="button" class="btn btn-outline-primary mx-2" onClick={()=>{navi('/notes');}}>Cancel</button>
+    
     
     
   </div>

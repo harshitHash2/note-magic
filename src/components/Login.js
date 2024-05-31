@@ -36,7 +36,12 @@ const Login = () => {
     
   return (
     <>
+    <h2 className='polo my-4' style={{textAlign: 'center', color: 'white'}}> Log-In </h2>
+    <div className='container ' style={{width: '35rem'}} >
+    <div className="card my-4" style={{borderRadius: '40px'}}>
+  <div className="card-body">
     <div className='container my-4'>
+
        <form onSubmit={handleSubmit}>
   <div className="form-group">
     <label htmlFor="email">Email address</label>
@@ -48,8 +53,11 @@ const Login = () => {
     <input type="password" className="form-control" id="password" name='password' value={credentials.password} onChange={onChange} placeholder="Password" />
   </div>
   
-  <button type="submit" className="btn btn-primary">Submit</button>
+  <button type="submit" className="btn btn-primary">LogIn</button>
 </form>
+</div>
+</div>
+</div>
 </div>
     </>
   )
