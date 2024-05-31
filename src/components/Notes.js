@@ -31,15 +31,11 @@ const Notes = () => {
       </div>
       <div className="container my-3">
         <div className="row">
-          {/* <React.Fragment> */}
+        
           {notes.map((note) => {
-            // return <h1>jg</h1>
-            // console.log(note)
 
-            return <Noteitem note={note} />;
+            return <Noteitem key={note._id} note={note} polo={note._id}/>;
           })}
-
-          {/* </React.Fragment> */}
         </div>
       </div>
     </>
