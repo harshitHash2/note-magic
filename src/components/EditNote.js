@@ -8,12 +8,11 @@ const EditNote = () => {
   const location = useLocation();
   const { id, it, i_d, ita } = location.state || {};
   const context = useContext(noteContext);
-  const { notes, editNote } = context;
+  const {editNote } = context;
 
   const [note, setNote] = useState({ title: it, description: i_d, tag: ita });
 
   const handleClick = () => {
-    // console.log(id);
     editNote(id, note.title, note.description, note.tag);
     navi("/notes");
   };
@@ -91,14 +90,14 @@ const EditNote = () => {
               </div>
               <button
                 type="button"
-                class="btn btn-outline-primary mx-2"
+                className="btn btn-outline-primary mx-2"
                 onClick={handleClick}
               >
                 Update
               </button>
               <button
                 type="button"
-                class="btn btn-outline-primary mx-2"
+                className="btn btn-outline-primary mx-2"
                 onClick={() => {
                   navi("/notes");
                 }}

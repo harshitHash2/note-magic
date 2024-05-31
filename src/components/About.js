@@ -1,12 +1,11 @@
-import React from 'react'
-import AddNote from './AddNote'
-import AboutCon from './AboutCon'
+import React from "react";
 
+import AboutCon from "./AboutCon";
 
 export const About = () => {
   return (
     <>
-      <AboutCon/>
+      <AboutCon />
     </>
-  )
-}
+  );
+};

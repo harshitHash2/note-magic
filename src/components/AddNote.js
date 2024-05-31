@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState} from "react";
 import noteContext from "../context/notes/noteContext";
 import { useNavigate } from "react-router-dom";
 
@@ -6,7 +6,7 @@ const AddNote = () => {
   // Declaring required variable and using Context
   let navi = useNavigate();
   const context = useContext(noteContext);
-  const { notes, addnewNote } = context;
+  const { addnewNote } = context;
 
   const [note, setNote] = useState({ title: "", description: "", tag: "" });
 
@@ -91,14 +91,14 @@ const AddNote = () => {
               </div>
               <button
                 type="button"
-                class="btn btn-outline-primary mx-2"
+                className="btn btn-outline-primary mx-2"
                 onClick={handleClick}
               >
                 Add
               </button>
               <button
                 type="button"
-                class="btn btn-outline-primary mx-2"
+                className="btn btn-outline-primary mx-2"
                 onClick={closeHandle}
               >
                 Cancel

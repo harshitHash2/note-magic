@@ -10,88 +10,99 @@ const NoteState = (props) => {
 
   // Fetch all Notes of the authenticated user
   const getNotes = async () => {
-
-    // API Call
-    const response = await fetch(`${host}/user/fetchallnotes`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-    });
-    const json = await response.json();
-    // Setting notes variable 
-    setNotes(json);
+    try {
+      // API Call
+      const response = await fetch(`${host}/user/fetchallnotes`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+      });
+      const json = await response.json();
+      // Setting notes variable
+      setNotes(json);
+    } catch (error) {
+      alert("Unable to fetch notes. Something Went Wrong");
+    }
   };
 
   // Add a new note for the authenticated user
   const addnewNote = async (title, description, tag) => {
-
-    // API Call
-    const response = await fetch(`${host}/user/newnote`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-      body: JSON.stringify({ title, description, tag }),
-    });
-    const note = await response.json();
-    // Concatenating to the fetched notes variable in frontend
-    setNotes(notes.concat(note));
+    try {
+      // API Call
+      const response = await fetch(`${host}/user/newnote`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+        body: JSON.stringify({ title, description, tag }),
+      });
+      const note = await response.json();
+      // Concatenating to the fetched notes variable in frontend
+      setNotes(notes.concat(note));
+    } catch (error) {
+      alert("Unable to add new note");
+    }
   };
-
 
   // Deleting a note
   const deleteNote = async (id) => {
+    try {
+      // API Call
+      // const response = 
+      await fetch(`${host}/user/deletenote/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+      });
 
-    // API Call
-    console.log(id);
-    const response = await fetch(`${host}/user/deletenote/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-    });
+      // const json = response.json();
 
-    const json = response.json();
-
-    // Filtering out the note with specific id 
-    const newNotes = notes.filter((note) => {
-      return note._id !== id;
-    });
-    setNotes(newNotes);
+      // Filtering out the note with specific id
+      const newNotes = notes.filter((note) => {
+        return note._id !== id;
+      });
+      setNotes(newNotes);
+    } catch (error) {
+      alert("Unable to delete");
+    }
   };
 
   // Updating a note
   const editNote = async (id, title, description, tag) => {
+    try {
+      // API Call
+      // const response = 
+      await fetch(`${host}/user/note/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+        body: JSON.stringify({ title, description, tag }),
+      });
 
-    // API Call
-    const response = await fetch(`${host}/user/note/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-      body: JSON.stringify({ title, description, tag }),
-    });
+      // const json = await response.json();
 
-    const json = await response.json();
-
-    let newNotes = JSON.parse(JSON.stringify(notes));
-    for (let index = 0; index < newNotes.length; index++) {
-      const element = newNotes[index];
-      if (element._id === id) {
-        newNotes[index].title = title;
-        newNotes[index].description = description;
-        newNotes[index].tag = tag;
-        break;
+      let newNotes = JSON.parse(JSON.stringify(notes));
+      for (let index = 0; index < newNotes.length; index++) {
+        const element = newNotes[index];
+        if (element._id === id) {
+          newNotes[index].title = title;
+          newNotes[index].description = description;
+          newNotes[index].tag = tag;
+          break;
+        }
       }
+      setNotes(newNotes);
+    } catch (error) {
+      alert("Unable to Update");
     }
-    setNotes(newNotes);
   };
-
 
   return (
     <noteContext.Provider

@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect} from "react";
 import Noteitem from "./Noteitem";
-// import NoteContext from "../context/notes/noteContext"
+
 import noteContext from "../context/notes/noteContext";
-import AddNote from "./AddNote";
+
 import { useNavigate } from "react-router-dom";
 
 const Notes = () => {
@@ -16,18 +16,17 @@ const Notes = () => {
     getNotes();
   });
 
-
   return (
     <>
       <div className="container my-4" style={{ textAlign: "center" }}>
         <button
           type="button"
-          class="btn btn-secondary"
+          className="btn btn-secondary"
           onClick={() => {
             navigator("/addnote");
           }}
         >
-          <i class="fa-duotone fa-message-plus"></i> Add Note
+          <i className="fa-duotone fa-message-plus"></i> Add Note
         </button>
       </div>
       <div className="container my-3">
