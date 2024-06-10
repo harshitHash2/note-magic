@@ -4,7 +4,7 @@ import noteContext from "./noteContext";
 
 const NoteState = (props) => {
   // Declaring the variables for required to connect to backend
-  const host = "http://localhost:5000";
+  const host = "https://note-magic-backend.onrender.com";
   const notesInitial = [];
   const [notes, setNotes] = useState(notesInitial);
 
@@ -23,7 +23,7 @@ const NoteState = (props) => {
       // Setting notes variable
       setNotes(json);
     } catch (error) {
-      alert("Unable to fetch notes. Something Went Wrong");
+      // alert("Unable to fetch notes. Something Went Wrong");
     }
   };
 
